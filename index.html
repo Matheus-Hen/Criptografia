@@ -12,12 +12,18 @@
     <div class="Operador">
         <h1>Criptografia</h1>
         <form id="Formul">
-            <input type="text" placeholder="Insira a sua mensagem">
+            <div id="Texts"> <input type="text" placeholder="Insira a sua mensagem" id="Text1"></div>
             <select name='ChooseCripto' id="Seleciona">
-                <option id="Op1" value="CifraDeCesar">Cifra de Cesar</option>
+                <option id="Op1" value="Cifra de Cesar">Cifra de Cesar</option>
                 <option id="Op2" value="Base64">Base64</option>
                 <option selected>Selecione</option>
             </select>
+            <div class="Buttons">
+                <input type="radio" id="Codificar" name="Codif" value="Codificar">
+                <label for="Codificar">Codificar</label>
+                <input type="radio" id="Descodificar" name="Descodif" value="Descodificar">
+                <label for="Descodificar">Descodificar</label>
+            </div>
         </form>
     </div>
     <script src="/criptografia.js"></script>
