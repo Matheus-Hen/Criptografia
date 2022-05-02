@@ -5,13 +5,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/index.css">
     <title>Criptografia</title>
 </head>
 
 <body>
     <div class="Operador">
-        <h1>Criptografia</h1>
-        <form id="Formul">
+        <h1 id="Titulo">Criptografia</h1>
+        <div id="Formul">
             <div id="Texts"> <input type="text" placeholder="Insira a sua mensagem" id="Text1"></div>
             <select name='ChooseCripto' id="Seleciona">
                 <option id="Op1" value="Cifra de Cesar">Cifra de Cesar</option>
@@ -19,12 +20,17 @@
                 <option selected>Selecione</option>
             </select>
             <div class="Buttons">
-                <input type="radio" id="Codificar" name="Codif" value="Codificar">
-                <label for="Codificar">Codificar</label>
-                <input type="radio" id="Descodificar" name="Descodif" value="Descodificar">
-                <label for="Descodificar">Descodificar</label>
+                <div> <input type="radio" id="Codificar" name="Codif" value="Codificar">
+                    <label for="Codificar">Codificar</label>
+                </div>
+                <div> <input type="radio" id="Descodificar" name="Codif" value="Descodificar">
+                    <label for="Descodificar">Descodificar</label>
+                </div>
             </div>
-        </form>
+            <div id="Button"><button id="CriptoButton"></button></div>
+            <div id="Result"><textarea id="Resultado"
+                    placeholder="O resultado da codificação/descodificação será exibido aqui!!!"></textarea></div>
+        </div>
     </div>
     <script src="/criptografia.js"></script>
 </body>
