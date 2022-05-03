@@ -1,10 +1,3 @@
-var cripto = []
-var Retorna = []
-var NewWord
-var bin = []
-var ValorBin
-
-
 document.getElementById('Seleciona').addEventListener("change", function () {
     var Selec = document.getElementById('Seleciona')
     if (Selec.options[0].selected) {
@@ -38,13 +31,19 @@ document.getElementById('Descodificar').addEventListener('click', function () {
 
 document.querySelector('#CriptoButton').addEventListener('click', function () {
     var RadioButton = document.getElementById('Codificar')
-    if (RadioButton.checked) return Codificar()
+    if (RadioButton.checked) Codificar()
     else return Descodificar()
 })
 
 function Codificar() {
     var Selec = document.getElementById('Seleciona')
     if (Selec.options[0].selected) {
+        var NewWord
+        var cripto = []
+        var Retorna = []
+        var Verifica = []
+        var quantosFoi = []
+        var falta = []
         var Mensg = document.getElementById('Text1').value
         var incre;
         var Verify = document.getElementById('Incremento').value
@@ -57,11 +56,24 @@ function Codificar() {
         if (Mensg != '') {
             for (var i = 0; Mensagem.length > i; i++) {
                 cripto[i] = Mensagem[i].charCodeAt(0)
+                Verifica[i] = Mensagem[i].charCodeAt(0)
                 cripto[i] = cripto[i] + incre
+                if (cripto[i] >= 91 && Verifica[i] >= 65 && Verifica[i] <= 90) {
+                    quantosFoi[i] = 91 - Verifica[i]
+                    falta[i] = incre - quantosFoi[i]
+                    cripto[i] = 65 + falta[i]
+                }
+                if (cripto[i] >= 123 && Verifica[i] >= 97 && Verifica[i] <= 122) {
+                    quantosFoi[i] = 123 - Verifica[i]
+                    falta[i] = incre - quantosFoi[i]
+                    cripto[i] = 97 + falta[i]
+                }
                 Retorna[i] = String.fromCharCode(cripto[i])
             }
             NewWord = Retorna.join('')
-            return document.getElementById('Resultado').innerText = NewWord
+            document.querySelector('#Resultado').value = ' '
+            document.querySelector('#Resultado').value = NewWord
+            console.log(NewWord)
         }
         else alert("Digite algo para criptografar")
 
@@ -79,18 +91,35 @@ function Codificar() {
 function Descodificar() {
     var Selec = document.getElementById('Seleciona')
     if ((Selec.options[0].selected)) {
+        var NewWord
+        var cripto = []
+        var Retorna = []
+        var Verifica = []
+        var quantosFoi = []
+        var falta = []
         var Mensg = document.getElementById('Text1').value
         var incre = document.getElementById('Incremento').value
         var Mensagem = Mensg.split('')
-        console.log(incre);
         if (Mensg != '') {
             for (var i = 0; Mensagem.length > i; i++) {
                 cripto[i] = Mensagem[i].charCodeAt(0)
+                Verifica[i] = Mensagem[i].charCodeAt(0)
                 cripto[i] = cripto[i] - incre
+                if (cripto[i] <= 64 && Verifica[i] >= 65 && Verifica[i] <= 90) {
+                    quantosFoi[i] = Verifica[i] - 64
+                    falta[i] = incre - quantosFoi[i]
+                    cripto[i] = 90 - falta[i]
+                }
+                if (cripto[i] <= 96 && Verifica[i] >= 97 && Verifica[i] <= 122) {
+                    quantosFoi[i] = Verifica[i] - 96
+                    falta[i] = incre - quantosFoi[i]
+                    cripto[i] = 122 - falta[i]
+                }
                 Retorna[i] = String.fromCharCode(cripto[i])
             }
             NewWord = Retorna.join('')
-            return document.getElementById('Resultado').innerText = NewWord
+            document.getElementById('Resultado').value = ''
+            return document.getElementById('Resultado').value = NewWord
         }
 
     }
